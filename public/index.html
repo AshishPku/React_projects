@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script
+      src="https://unpkg.com/react@18/umd/react.development.js"
+      crossorigin
+    ></script>
+    <script
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+      crossorigin
+    ></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="mydiv"></div>
+
+    <script type="text/babel">
+      function App() {
+        const [time, setTime] = React.useState(new Date().toLocaleTimeString());
+        React.useEffect(function () {
+          setInterval(function () {
+            setTime(new Date().toLocaleTimeString());
+          });
+        }, []);
+        return React.createElement("h1", null, `The current timing is ${time}`);
+      }
+      const root = ReactDOM.createRoot(document.getElementById("mydiv"));
+      root.render(<App />);
+    </script>
+  </body>
+</html>
